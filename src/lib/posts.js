@@ -4,7 +4,7 @@ import path from 'path';
 import { glob } from 'fast-glob';
 import matter from 'gray-matter';
 
-const POSTS_PATH = 'src/app/_posts';
+const POSTS_PATH = 'src/app/_posts/';
 
 /**
  * 
