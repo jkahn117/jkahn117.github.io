@@ -9,10 +9,10 @@ import { getAllPosts, getPost } from '@/lib/posts';
 export async function generateStaticParams() {
   const posts = await getAllPosts();
 
+  if (!posts || posts.length === 0) { return [{ slug: 'not-found' }] }
+
   return posts.map((post) => ({
-    params: {
-      slug: post.slug
-    }
+    slug: post.slug.split('/').slice(1, 4)
   }));
 }
 
