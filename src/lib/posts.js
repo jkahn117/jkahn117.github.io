@@ -7,7 +7,8 @@ import matter from 'gray-matter';
 const POSTS_PATH = 'src/app/_posts/';
 
 /**
- * 
+ * Load all posts from the _posts directory.
+ * @returns array of all posts
  */
 export const getAllPosts = cache(async() => {
   // get files in the app/_posts directory
@@ -35,7 +36,9 @@ export const getAllPosts = cache(async() => {
 });
 
 /**
- * 
+ * Gets a single post.
+ * @param {string} slug post to retrieve
+ * @returns post metadata and content
  */
 export const getPost = cache(async(slug) => {
   const parts = slug.match(/(\d+)\/(\d\d)\/([\w\-]+)/);

@@ -12,7 +12,7 @@ export async function generateStaticParams() {
   if (!posts || posts.length === 0) { return [{ slug: 'not-found' }] }
 
   return posts.map((post) => ({
-    slug: post.slug.split('/').slice(1, 4)
+    slug: post.slug.split('/').slice(0, 3)
   }));
 }
 
