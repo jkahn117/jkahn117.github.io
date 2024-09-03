@@ -6,10 +6,18 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import {
+  CloseButton,
   Popover,
   PopoverButton,
   PopoverBackdrop,
   PopoverPanel,
+  //
+  Menu,
+  MenuButton,
+  MenuHeading,
+  MenuItem,
+  MenuItems,
+  MenuSection,
 } from '@headlessui/react'
 import clsx from 'clsx'
 
@@ -78,16 +86,77 @@ function MoonIcon(props) {
 }
 
 function MobileNavItem({ href, children }) {
+  let isActive = usePathname() === href;
+
   return (
     <li>
-      <PopoverButton as={Link} href={href} className="block py-2">
+      <MenuItem as={Link} href={href}
+        className={clsx(
+          'block py-2',
+          isActive
+            ? 'font-extrabold text-teal-500 dark:text-teal-400'
+            : 'hover:text-teal-500 dark:hover:text-teal-400',
+        )}
+      >
         {children}
-      </PopoverButton>
+      </MenuItem>
     </li>
   )
 }
 
 function MobileNavigation(props) {
+  return (
+    <Menu { ...props } as="div">
+      <MenuButton className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
+        Menu
+        <ChevronDownIcon className="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400" />
+      </MenuButton>
+
+      <MenuItems
+        transition
+        anchor={{ to: 'bottom end', gap: '8px' }}
+        className="fixed inset-x-4 top-8 z-50 origin-top rounded-3xl w-3/4 bg-white p-8 ring-2 ring-zinc-900/5 duration-150 data-[closed]:scale-95 data-[closed]:opacity-0 data-[enter]:ease-out data-[leave]:ease-in dark:bg-zinc-900 dark:ring-zinc-800"
+      >
+        <MenuSection>
+          <MenuHeading className="flex flex-row-reverse items-center justify-between">
+            <MenuItem className="-m-1 p-1">
+              {({ close }) => (
+                <a className="" aria-label="Close menu" href="#" onClick={ close }>
+                  <CloseIcon className="h-6 w-6 text-zinc-500 dark:text-zinc-400" />
+                </a>
+              )}
+            </MenuItem>
+            {/* <h2 className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
+              Navigation
+            </h2> */}
+          </MenuHeading>
+          <nav className="mt-4">
+            <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
+            <MobileNavItem href="/">Home</MobileNavItem>
+              <MobileNavItem href="/about">About</MobileNavItem>
+              <MobileNavItem href="/posts">Posts</MobileNavItem>
+              {/* <MobileNavItem href="/projects">Projects</MobileNavItem> */}
+              <MobileNavItem href="/speaking">Speaking</MobileNavItem>
+              {/* <MobileNavItem href="/uses">Uses</MobileNavItem> */}
+            </ul>
+          </nav>
+        </MenuSection>
+      </MenuItems>
+    </Menu>
+  )
+}
+
+function MobileNavItem1({ href, children }) {
+  return (
+    <li>
+      <CloseButton as={Link} href={href} className="block py-2">
+        {children}
+      </CloseButton>
+    </li>
+  )
+}
+
+function MobileNavigation1(props) {
   return (
     <Popover {...props}>
       <PopoverButton className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
@@ -104,9 +173,9 @@ function MobileNavigation(props) {
         className="fixed inset-x-4 top-8 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5 duration-150 data-[closed]:scale-95 data-[closed]:opacity-0 data-[enter]:ease-out data-[leave]:ease-in dark:bg-zinc-900 dark:ring-zinc-800"
       >
         <div className="flex flex-row-reverse items-center justify-between">
-          <PopoverButton aria-label="Close menu" className="-m-1 p-1">
+          <CloseButton as={ PopoverButton } aria-label="Close menu" className="-m-1 p-1">
             <CloseIcon className="h-6 w-6 text-zinc-500 dark:text-zinc-400" />
-          </PopoverButton>
+          </CloseButton>
           <h2 className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
             Navigation
           </h2>
