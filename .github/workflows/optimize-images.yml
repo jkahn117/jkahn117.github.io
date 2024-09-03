@@ -39,7 +39,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # For non-Pull Requests, run in compressOnly mode and we'll PR after.
-          COMPRESS_ONLY: ${{ github.event_name != 'pull_request' }}
+          INPUT_COMPRESS_ONLY: ${{ github.event_name != 'pull_request' }}
       - name: Create Pull Request
         # If it's not a Pull Request then commit any changes as a new PR.
         if: |
