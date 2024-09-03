@@ -3,7 +3,11 @@ import assert from 'assert';
 import { Feed } from 'feed';
 
 export async function GET(req) {
-  let siteUrl = process.env.PUBLIC_SITE_URL || 'http://localhost:3000';
+  let siteUrl = process.env.PUBLIC_SITE_URL;
+
+  if (!siteUrl) {
+    throw Error('Missing PUBLIC_SITE_URL environment variable')
+  }
 
   const author = {
     name: 'Josh Kahn'
