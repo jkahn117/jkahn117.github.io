@@ -38,6 +38,7 @@ jobs:
         uses: calibreapp/image-actions@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
           # For non-Pull Requests, run in compressOnly mode and we'll PR after.
           INPUT_COMPRESS_ONLY: ${{ github.event_name != 'pull_request' }}
       - name: Create Pull Request
