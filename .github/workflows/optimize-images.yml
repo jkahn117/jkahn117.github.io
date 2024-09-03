@@ -23,7 +23,7 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    name: calibreapp/image-actions
+    name: calibreapp/image-actions@1.1.0
     runs-on: ubuntu-latest
     # Only run on main repo on and PRs that match the main repo.
     if: |
