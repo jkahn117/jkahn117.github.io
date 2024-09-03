@@ -23,7 +23,7 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    name: calibreapp/image-actions@1.1.0
+    name: calibreapp/image-actions
     runs-on: ubuntu-latest
     # Only run on main repo on and PRs that match the main repo.
     if: |
@@ -32,12 +32,12 @@ jobs:
        github.event.pull_request.head.repo.full_name == github.repository)
     steps:
       - name: Checkout Branch
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Compress Images
         id: calibre
-        uses: calibreapp/image-actions@main
-        with:
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+        uses: calibreapp/image-actions@1.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # For non-Pull Requests, run in compressOnly mode and we'll PR after.
           compressOnly: ${{ github.event_name != 'pull_request' }}
       - name: Create Pull Request
@@ -45,7 +45,7 @@ jobs:
         if: |
           github.event_name != 'pull_request' &&
           steps.calibre.outputs.markdown != ''
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v7
         with:
           title: Auto Compress Images
           branch-suffix: timestamp
