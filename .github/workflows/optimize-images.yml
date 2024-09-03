@@ -52,3 +52,4 @@ jobs:
           branch-suffix: timestamp
           commit-message: Compress Images
           body: ${{ steps.calibre.outputs.markdown }}
+
