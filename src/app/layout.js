@@ -13,7 +13,7 @@ export const metadata = {
     "I'm Josh, a technology guy based in Chicago, IL.",
   alternates: {
     types: {
-      'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,
+      'application/rss+xml': `${process.env.PUBLIC_SITE_URL}/feed.xml`,
     },
   },
 }
