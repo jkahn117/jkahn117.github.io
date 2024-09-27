@@ -23,6 +23,7 @@ import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
 import avatarImage from '@/images/avatar.jpg'
+import ExportedImage from 'next-image-export-optimizer'
 
 function CloseIcon(props) {
   return (
@@ -279,7 +280,7 @@ function Avatar({ large = false, className, ...props }) {
       className={clsx(className, 'pointer-events-auto')}
       {...props}
     >
-      <Image
+      <ExportedImage
         src={avatarImage}
         alt=""
         sizes={large ? '4rem' : '2.25rem'}
