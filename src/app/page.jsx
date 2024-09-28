@@ -61,7 +61,7 @@ function BriefcaseIcon(props) {
 function Post({ post }) {
   return (
     <Card as="article">
-      <Card.Title href={`/posts/${post.slug}`}>
+      <Card.Title href={ post.redirect_link ? post.redirect_link : `/posts/${post.slug}`}>
         {post.title}
       </Card.Title>
       <Card.Eyebrow as="time" dateTime={post.date} decorate>

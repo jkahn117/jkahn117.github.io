@@ -7,7 +7,7 @@ function Post({ post }) {
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">
       <Card className="md:col-span-3">
-        <Card.Title href={`/posts/${post.slug}`}>
+        <Card.Title href={ post.redirect_link ? post.redirect_link : `/posts/${post.slug}`}>
           {post.title}
         </Card.Title>
         <Card.Eyebrow
