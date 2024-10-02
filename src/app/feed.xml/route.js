@@ -32,7 +32,7 @@ export async function GET(req) {
     assert(typeof post.date === 'string')
     assert(typeof post.summary === 'string')
 
-    const postUrl = `${siteUrl}/posts/${post.slug}`;
+    const postUrl = post.redirect_link ? post.redirect_link : `${siteUrl}/posts/${post.slug}`;
 
     feed.addItem({
       title: post.title,
