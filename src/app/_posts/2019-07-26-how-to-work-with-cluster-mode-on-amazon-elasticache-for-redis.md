@@ -1,5 +1,4 @@
 ---
-slug: "2019-07-26-how-to-work-with-cluster-mode-on-amazon-elasticache-for-redis"
 date: "2019-08-26T05:00:00.000Z"
 title: "How to work with Cluster Mode on Amazon ElastiCache for Redis"
 author: "Josh"

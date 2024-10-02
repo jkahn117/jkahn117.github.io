@@ -1,5 +1,4 @@
 ---
-slug: "2023-04-26-building-private-serverless-apis-with-aws-lambda-and-amazon-vpc-lattice"
 date: "2023-05-26T05:00:00.000Z"
 title: "Building private serverless APIs with AWS Lambda and Amazon VPC Lattice"
 author: "Josh"

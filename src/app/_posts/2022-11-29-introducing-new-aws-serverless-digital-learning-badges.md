@@ -1,5 +1,4 @@
 ---
-slug: "2022-11-29-introducing-new-aws-serverless-digital-learning-badges"
 date: "2022-12-29T06:00:00.000Z"
 title: "Introducing new AWS Serverless digital learning badges"
 author: "Josh"

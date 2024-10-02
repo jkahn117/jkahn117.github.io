@@ -1,5 +1,4 @@
 ---
-slug: "2024-01-30-build-real-time-applications-with-amazon-eventbridge-and-aws-appsync"
 date: "2024-03-01T06:00:00.000Z"
 title: "Build real-time applications with Amazon EventBridge and AWS AppSync"
 author: "Josh"

@@ -1,5 +1,4 @@
 ---
-slug: "2017-03-08-amazon-elasticache-utilizing-redis-geospatial-capabilities"
 date: "2017-04-08T05:00:00.000Z"
 title: "Amazon ElastiCache: Utilizing Redis Geospatial Capabilities"
 author: "Josh"

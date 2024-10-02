@@ -1,5 +1,4 @@
 ---
-slug: "2018-05-10-how-to-build-a-real-time-sales-analytics-dashboard-with-amazon-elasticache-for-redis"
 date: "2018-06-10T05:00:00.000Z"
 title: "How to build a real-time sales analytics dashboard with Amazon ElastiCache for Redis"
 author: "Josh"

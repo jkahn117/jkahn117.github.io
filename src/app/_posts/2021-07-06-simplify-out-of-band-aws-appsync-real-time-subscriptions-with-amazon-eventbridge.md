@@ -1,5 +1,4 @@
 ---
-slug: "2021-07-06-simplify-out-of-band-aws-appsync-real-time-subscriptions-with-amazon-eventbridge"
 date: "2021-08-06T05:00:00.000Z"
 title: "Simplify out of band AWS AppSync real-time subscriptions with Amazon EventBridge"
 author: "Josh"

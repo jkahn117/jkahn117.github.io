@@ -1,5 +1,4 @@
 ---
-slug: "2019-04-05-invoke-aws-services-directly-from-aws-appsync"
 date: "2019-05-05T05:00:00.000Z"
 title: "Invoke AWS services directly from AWS AppSync"
 author: "Josh"

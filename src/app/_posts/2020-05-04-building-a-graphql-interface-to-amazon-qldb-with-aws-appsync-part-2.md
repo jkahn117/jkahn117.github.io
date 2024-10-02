@@ -1,5 +1,4 @@
 ---
-slug: "2020-05-04-building-a-graphql-interface-to-amazon-qldb-with-aws-appsync-part-2"
 date: "2020-06-04T05:00:00.000Z"
 title: "Building a GraphQL interface to Amazon QLDB with AWS AppSync: Part 2"
 author: "Josh"

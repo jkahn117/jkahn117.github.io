@@ -1,5 +1,4 @@
 ---
-slug: "2019-08-22-integrating-alternative-data-sources-with-aws-appsync-amazon-neptune-and-amazon-elasticache"
 date: "2019-09-22T05:00:00.000Z"
 title: "Integrating alternative data sources with AWS AppSync: Amazon Neptune and Amazon ElastiCache"
 author: "Josh"

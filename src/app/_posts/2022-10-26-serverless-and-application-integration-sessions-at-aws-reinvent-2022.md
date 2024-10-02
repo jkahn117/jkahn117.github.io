@@ -1,5 +1,4 @@
 ---
-slug: "2022-10-26-serverless-and-application-integration-sessions-at-aws-reinvent-2022"
 date: "2022-11-26T06:00:00.000Z"
 title: "Serverless and Application Integration sessions at AWS re:Invent 2022"
 author: "Josh"

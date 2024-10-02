@@ -52,7 +52,6 @@ if (fs.existsSync(`./src/app/_posts/${postSlug}.md`)) {
 }
 
 let frontMatter = `---
-slug: "${postSlug}"
 date: "${new Date(date.year, date.month, date.date).toISOString()}"
 title: "${title}"
 author: "Josh"
