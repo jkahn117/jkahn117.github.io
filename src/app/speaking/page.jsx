@@ -37,11 +37,25 @@ export default function Speaking() {
     >
       <div className="space-y-20">
         <SpeakingSection title="Conferences">
+        <Appearance
+            href="https://gotopia.eu/eda-day-warsaw-2024/sessions/3416/patterns-for-building-event-driven-web-and-mobile-app-backends"
+            title="Patterns for Building Event-driven Web & Mobile App Backends"
+            description="User interfaces by their nature are event driven - interactions trigger events that drive the application. But integrations between frontend and backend are often built synchronously using a request/response pattern. This session explores patterns to enable asynchronous, event-driven integrations with the frontend. It's designed for architects, frontend, backend, and full-stack engineers. You will leave with real-world patterns that bring the agility and responsiveness of EDA across client-server interactions."
+            event="GOTO EDA Day 2024 - Warsaw"
+            cta="Video coming soon"
+          />
           <Appearance
             href="https://www.youtube.com/watch?v=okshuSlDSpk&list=PLEx5khR4g7PJO9-CeWVBJ8If1C4jg7brx&index=9"
             title="Patterns for Building Event-driven Web & Mobile App Backends"
             description="User interfaces by their nature are event driven - interactions trigger events that drive the application. But integrations between frontend and backend are often built synchronously using a request/response pattern. This session explores patterns to enable asynchronous, event-driven integrations with the frontend. It's designed for architects, frontend, backend, and full-stack engineers. You will leave with real-world patterns that bring the agility and responsiveness of EDA across client-server interactions."
             event="GOTO EDA Day 2024 - London"
+            cta="Watch video"
+          />
+          <Appearance
+            href="https://www.youtube.com/watch?v=OJD3UMuU8Zk"
+            title="Building Modern Apps with AWS: Choosing the Approach that Works for You"
+            description="In this companion video to the AWS Modern Apps decision guide, decision guide manager Geof Wheelwright talks to co-author and AWS Serverless Tech Leader Josh Kahn about what goes into finding the right operational model for your modern app development and explains how the guide can help."
+            event="AWS Modern Apps Decision Guide"
             cta="Watch video"
           />
           <Appearance
