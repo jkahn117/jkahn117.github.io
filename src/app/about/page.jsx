@@ -4,6 +4,7 @@ import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
 import {
+  BlueskyIcon,
   GitHubIcon,
   LinkedInIcon,
   XIcon,
@@ -83,8 +84,8 @@ export default function About() {
         </div>
         <div className="lg:pl-20">
           <ul role="list">
-            <SocialLink href="https://x.com/joshuaakahn" icon={XIcon}>
-              Follow on X
+            <SocialLink href="https://bsky.app/profile/iamjkahn.com" icon={BlueskyIcon}>
+              Follow on Bluesky
             </SocialLink>
             <SocialLink href="https://github.com/jkahn117" icon={GitHubIcon} className="mt-4">
               Follow on GitHub
@@ -92,6 +93,10 @@ export default function About() {
             <SocialLink href="https://www.linkedin.com/in/joshuaakahn/" icon={LinkedInIcon} className="mt-4">
               Follow on LinkedIn
             </SocialLink>
+            <SocialLink href="https://x.com/joshuaakahn" icon={XIcon} className="mt-4">
+              Follow on X
+            </SocialLink>
+            
             {/* <SocialLink
               href="mailto:spencer@planetaria.tech"
               icon={MailIcon}
