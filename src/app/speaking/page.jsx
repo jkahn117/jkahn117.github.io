@@ -38,7 +38,7 @@ export default function Speaking() {
       <div className="space-y-20">
         <SpeakingSection title="Conferences">
           <Appearance
-            href="https://gotopia.eu/eda-day-warsaw-2024/sessions/3416/patterns-for-building-event-driven-web-and-mobile-app-backends"
+            href="https://www.youtube.com/watch?v=HSyE9nS5mMs"
             title="Patterns for Building Event-driven Web & Mobile App Backends"
             description="User interfaces by their nature are event driven - interactions trigger events that drive the application. But integrations between frontend and backend are often built synchronously using a request/response pattern. This session explores patterns to enable asynchronous, event-driven integrations with the frontend. It's designed for architects, frontend, backend, and full-stack engineers. You will leave with real-world patterns that bring the agility and responsiveness of EDA across client-server interactions."
             event="GOTO EDA Day 2024 - Warsaw"
