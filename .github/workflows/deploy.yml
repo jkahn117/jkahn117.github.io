@@ -76,7 +76,7 @@ jobs:
       - name: Build with Next.js
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
       - name: Optimize images
-        run: ${{ steps.detect-package-manager.outputs.runner }} next-image-export-optimizer
+        run: ${{ steps.detect-package-manager.outputs.runner }} next-image-export-optimizer --nextConfigPath next.config.mjs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
