@@ -7,6 +7,7 @@ import ExportedImage from 'next-image-export-optimizer'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import {
+  BlueskyIcon,
   GitHubIcon,
   LinkedInIcon,
   XIcon,
@@ -210,9 +211,10 @@ export default async function Home() {
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
-              href="https://x.com/joshuaakahn"
-              aria-label="Follow on X"
-              icon={XIcon} />
+              href="https://bsky.app/profile/iamjkahn.com"
+              aria-label="Follow on Bluesky"
+              icon={BlueskyIcon}
+            />
             <SocialLink
               href="https://github.com/jkahn117"
               aria-label="Follow on GitHub"
@@ -222,6 +224,11 @@ export default async function Home() {
               href="https://www.linkedin.com/in/joshuaakahn/"
               aria-label="Follow on LinkedIn"
               icon={LinkedInIcon}
+            />
+            <SocialLink
+              href="https://x.com/joshuaakahn"
+              aria-label="Follow on X"
+              icon={XIcon}
             />
           </div>
         </div>
