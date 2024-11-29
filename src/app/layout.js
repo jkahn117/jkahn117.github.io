@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import { Providers } from '@/app/providers'
 import { Layout } from '@/components/Layout'
 
@@ -22,6 +21,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full antialiased" suppressHydrationWarning>
+      <head>
+        <script src="https://beamanalytics.b-cdn.net/beam.min.js"
+          data-token="bc31214f-5579-438d-b781-416b8f686177"
+          async
+        >
+        </script>
+      </head>
       <body className="flex h-full bg-zinc-50 dark:bg-black">
         <Providers>
           <div className="flex w-full">
@@ -29,13 +35,6 @@ export default function RootLayout({ children }) {
           </div>
         </Providers>
       </body>
-      <Head>
-        <script src="https://beamanalytics.b-cdn.net/beam.min.js"
-          data-token="bc31214f-5579-438d-b781-416b8f686177"
-          async
-        >
-        </script>
-      </Head>
     </html>
   )
 }
