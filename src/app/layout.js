@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full antialiased" suppressHydrationWarning>
       <head>
-        <script src="https://beamanalytics.b-cdn.net/beam.min.js"
+        <script src="https://beamanalytics.io/beam.min.js"
           data-token="bc31214f-5579-438d-b781-416b8f686177"
           async
         >
