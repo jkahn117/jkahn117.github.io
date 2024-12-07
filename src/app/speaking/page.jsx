@@ -37,12 +37,26 @@ export default function Speaking() {
     >
       <div className="space-y-20">
         <SpeakingSection title="Conferences">
+        <Appearance
+            href="https://www.youtube.com/watch?v=uqu7D6q1h34"
+            title="Asynchronous frontends: Building seamless event-driven experiences (API305)"
+            description="User interfaces by nature are event-driven—interactions trigger events that drive the application. But, integrations between the frontend and backend are often built synchronously using a request/response pattern. This session explores patterns to enable asynchronous, event-driven integrations with the frontend. It’s designed for architects and frontend, backend, and full-stack engineers. Leave this session with real-world patterns that bring the agility and responsiveness of event-driven architecture across client-server interactions."
+            event="AWS re:Invent 2024"
+            cta="Watch video"
+          />
+          <Appearance
+            href="https://www.youtube.com/watch?v=jYbfQ07Z7rM"
+            title="Implementing security best practices for serverless applications (SVS324)"
+            description="Building with serverless enables organizations to build and deploy applications without managing underlying infrastructure. Serverless strengthens your overall security posture by reducing attack surface and shifting security operations to AWS. In this session, explore how to implement security best practices across the software delivery lifecycle and into production deployment. Hear lessons learned from working with numerous enterprise customers that can help your builders be productive and innovative within security guardrails."
+            event="AWS re:Invent 2024"
+            cta="Watch video"
+          />
           <Appearance
             href="https://www.youtube.com/watch?v=HSyE9nS5mMs"
             title="Patterns for Building Event-driven Web & Mobile App Backends"
             description="User interfaces by their nature are event driven - interactions trigger events that drive the application. But integrations between frontend and backend are often built synchronously using a request/response pattern. This session explores patterns to enable asynchronous, event-driven integrations with the frontend. It's designed for architects, frontend, backend, and full-stack engineers. You will leave with real-world patterns that bring the agility and responsiveness of EDA across client-server interactions."
             event="GOTO EDA Day 2024 - Warsaw"
-            cta="Video coming soon"
+            cta="Watch video"
           />
           <Appearance
             href="https://www.youtube.com/watch?v=okshuSlDSpk&list=PLEx5khR4g7PJO9-CeWVBJ8If1C4jg7brx&index=9"
@@ -65,13 +79,6 @@ export default function Speaking() {
             event="AWS re:Invent 2022"
             cta="Watch video"
           />
-          <Appearance
-            href="https://www.youtube.com/watch?v=ZplOXryhX4k"
-            title="Handling errors in a serverless world (SVS311)"
-            description="Serverless technologies introduced new ways to build highly scalable, resilient applications without managing infrastructure. When building serverless applications by using several managed services, how should you handle errors? Should you include a try/catch block in your code or let the service deal with errors? What if the function is invoked as a task in an AWS Step Functions state machine? Can AWS Lambda Destinations help? In this session, explore error handling across Lambda invocation models and discuss patterns for proper visibility and retry behavior. Leave this session with a better understanding of how to code and/or configure services to better deal with errors across different use cases."
-            event="AWS re:Invent 2020 (virtual)"
-            cta="Watch video"
-          />
         </SpeakingSection>
 
         <SpeakingSection title="Webinars">
@@ -82,6 +89,13 @@ export default function Speaking() {
               event="AWS Modern Apps Decision Guide"
               cta="Watch video"
             />
+          <Appearance
+            href="https://www.youtube.com/watch?v=ZplOXryhX4k"
+            title="Handling errors in a serverless world (SVS311)"
+            description="Serverless technologies introduced new ways to build highly scalable, resilient applications without managing infrastructure. When building serverless applications by using several managed services, how should you handle errors? Should you include a try/catch block in your code or let the service deal with errors? What if the function is invoked as a task in an AWS Step Functions state machine? Can AWS Lambda Destinations help? In this session, explore error handling across Lambda invocation models and discuss patterns for proper visibility and retry behavior. Leave this session with a better understanding of how to code and/or configure services to better deal with errors across different use cases."
+            event="AWS re:Invent 2020 (virtual)"
+            cta="Watch video"
+          />
         </SpeakingSection>
       </div>
     </SimpleLayout>
