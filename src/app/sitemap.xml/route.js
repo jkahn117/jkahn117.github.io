@@ -1,10 +1,13 @@
 // generate sitemap
-function getSitemap() {
+import { differenceInYears } from 'date-fns';
+import { getAllPosts } from '@/lib/posts';
+
+async function getSitemap() {
   const map = [
     {
       url: 'https://blog.iamjkahn.com',
       lastModified: new Date(),
-      changeFrequency: 'yearly',
+      changeFrequency: 'monthly',
       priority: 1,
     },
     {
@@ -27,6 +30,18 @@ function getSitemap() {
     }
   ];
 
+  const posts = await getAllPosts();
+
+  posts.forEach((post) => {
+    console.log(post)
+    map.push({
+      url: `https://blog.iamjkahn.com/posts/${post.slug}`,
+      lastModified: new Date(post.date),
+      changeFrequency: 'monthly',
+      priority: (differenceInYears(new Date(), new Date(post.date)) > 3 ? 0.3 : 0.6),
+    });
+  });
+
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -47,7 +62,7 @@ function getSitemap() {
 };
 
 export async function GET() {
-  return new Response(getSitemap(), {
+  return new Response(await getSitemap(), {
     headers: {
       'Content-Type': 'text/xml',
     },
