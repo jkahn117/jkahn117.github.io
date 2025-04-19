@@ -12,6 +12,7 @@ import {
   LinkedInIcon,
   XIcon,
 } from '@/components/SocialIcons'
+import logoStripe from '@/images/logos/stripe.svg'
 import logoAmazon from '@/images/logos/amazon.svg'
 import logoApple from '@/images/logos/apple.svg'
 import logoAccenture from '@/images/logos/accenture.svg'
@@ -122,14 +123,21 @@ function Role({ role }) {
 function Resume() {
   let resume = [
     {
-      company: 'Amazon Web Services',
-      title: 'Principal Solutions Architect',
-      logo: logoAmazon,
-      start: '2016',
+      company: 'Stripe',
+      title: 'Solutions Architect',
+      logo: logoStripe,
+      start: '2025',
       end: {
         label: 'Present',
         dateTime: new Date().getFullYear().toString(),
       },
+    },
+    {
+      company: 'Amazon Web Services',
+      title: 'Principal Solutions Architect',
+      logo: logoAmazon,
+      start: '2016',
+      end: '2025'
     },
     {
       company: 'Apple',
