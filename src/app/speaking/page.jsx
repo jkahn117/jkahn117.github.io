@@ -83,6 +83,13 @@ export default function Speaking() {
 
         <SpeakingSection title="Webinars">
           <Appearance
+          		href="https://youtu.be/DIsGgXfp7RI"
+              title="Connecting Stripe events to frontends in realtime"
+              description="The frontend is harder than you think. A conversation between Head of Stripe Developer Relations James Beswick and Stripe Solution Architect Josh Kahn."
+              event="Stripe Developer"
+              cta="Watch video"
+            />
+          <Appearance
               href="https://www.youtube.com/watch?v=OJD3UMuU8Zk"
               title="Building Modern Apps with AWS: Choosing the Approach that Works for You"
               description="In this companion video to the AWS Modern Apps decision guide, decision guide manager Geof Wheelwright talks to co-author and AWS Serverless Tech Leader Josh Kahn about what goes into finding the right operational model for your modern app development and explains how the guide can help."
