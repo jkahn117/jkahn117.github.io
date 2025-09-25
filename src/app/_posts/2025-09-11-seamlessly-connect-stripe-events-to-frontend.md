@@ -1,7 +1,7 @@
 ---
-date: "2021-08-06T05:00:00.000Z"
-title: "Simplify out of band AWS AppSync real-time subscriptions with Amazon EventBridge"
+date: "2025-09-11T06:00:00.000Z"
+title: "Seamlessly connect Stripe events to your frontend"
 author: "Josh"
-summary: "AWS AppSync is a managed GraphQL service that can enable real-time data through the use of GraphQL subscriptions. Subscriptions are implemented and managed between the client and backend in AppSync via WebSocket connections. Any data source exposed by an AppSync API can support subscriptions, including pre-integrated data sources such as Amazon DynamoDB and Amazon OpenSearch Service (successor to Amazon Elasticsearch Service) in addition to alternative data sources such as Amazon Neptune or Amazon QLDB."
-redirect_link: https://aws.amazon.com/blogs/mobile/appsync-eventbridge/
+summary: "In this blog post, we will explore approaches for connecting Stripe events received by your backend services to your frontend applications. We will delve into asynchronous, event-driven integrations that foster agility, responsiveness, and scalability across client-server interactions."
+redirect_link: https://stripe.dev/blog/seamlessly-connect-stripe-events-to-your-frontend
 ---
