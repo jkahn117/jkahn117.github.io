@@ -83,6 +83,13 @@ export default function Speaking() {
 
         <SpeakingSection title="Webinars">
           <Appearance
+          		href="https://www.youtube.com/watch?v=G2SmRkHcKE4"
+              title="Why embedded finance is transforming modern businesses with Stripe Connect"
+              description="Stripe Solution Architect Josh Kahn explains how embedded finance is revolutionizing the way businesses integrate financial services. Learn why building payment capabilities in-house isn't recommended, how Stripe Connect reduces complexity through unified APIs and compliance handling, and discover the revenue opportunities available through embedded payments, capital, and issuing services. Josh discusses real business considerations, implementation timelines, and why both large enterprises and small businesses can benefit from embedded finance solutions. From vertical software platforms serving dentists and veterinarians to education platforms supporting tutors and institutions, see how Connect enables businesses to focus on their core differentiators while Stripe handles the complexity of payments infrastructure."
+              event="Stripe Tour New York 2025"
+              cta="Watch video"
+            />
+          <Appearance
           		href="https://youtu.be/DIsGgXfp7RI"
               title="Connecting Stripe events to frontends in realtime"
               description="The frontend is harder than you think. A conversation between Head of Stripe Developer Relations James Beswick and Stripe Solution Architect Josh Kahn."
