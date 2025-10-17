@@ -81,6 +81,18 @@ export default function Speaking() {
           />
         </SpeakingSection>
 
+        <div className="space-y-20">
+        <SpeakingSection title="Meet Ups">
+        <Appearance
+            href="https://www.youtube.com/watch?v=YTeug7JjMoc"
+            title="Seamlessly connect Stripe events to your frontend"
+            description="Josh Kahn, Solution Architect at Stripe, demonstrates how to build event-driven architectures that connect payment processing to real-time user interfaces. Using the analogy of airport flight boards, Josh explains the difference between polling and push-based architectures, then shows a live demo of a point-of-sale system that uses Stripe webhooks, Temporal workflows, and Memento Topics to create responsive user experiences. Learn about architectural patterns, messaging technologies, and practical considerations for scaling event-driven payment systems."
+            event="Stripe Developer Meet Up - Chicago, October 2025"
+            cta="Watch video"
+          />
+        </SpeakingSection>
+        </div>
+
         <SpeakingSection title="Webinars">
           <Appearance
           		href="https://www.youtube.com/watch?v=G2SmRkHcKE4"
