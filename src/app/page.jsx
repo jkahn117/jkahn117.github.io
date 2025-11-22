@@ -12,6 +12,7 @@ import {
   LinkedInIcon,
   XIcon,
 } from '@/components/SocialIcons'
+import logoCloudflare from '@/images/logos/cloudflare.svg'
 import logoStripe from '@/images/logos/stripe.svg'
 import logoAmazon from '@/images/logos/amazon.svg'
 import logoApple from '@/images/logos/apple.svg'
@@ -123,14 +124,21 @@ function Role({ role }) {
 function Resume() {
   let resume = [
     {
-      company: 'Stripe',
-      title: 'Solutions Architect',
-      logo: logoStripe,
+      company: 'Cloudflare',
+      title: 'Principal Solutions Architect',
+      logo: logoCloudflare,
       start: '2025',
       end: {
         label: 'Present',
         dateTime: new Date().getFullYear().toString(),
       },
+    },
+    {
+      company: 'Stripe',
+      title: 'Solutions Architect',
+      logo: logoStripe,
+      start: '2025',
+      end: '2025'
     },
     {
       company: 'Amazon Web Services',
