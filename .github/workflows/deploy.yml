@@ -26,8 +26,11 @@ jobs:
           node-version: "22"
           cache: "pnpm"
 
+      - name: Install
+        run: pnpm install
+
       - name: Build
-        run: npm run build
+        run: pnpm run build
 
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
