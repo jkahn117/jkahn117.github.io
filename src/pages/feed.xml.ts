@@ -1,9 +1,10 @@
 import rss from '@astrojs/rss'
 import { getCollection } from 'astro:content'
+import type { APIContext } from 'astro'
 
 export const prerender = true
 
-export async function GET(context) {
+export async function GET(context: APIContext) {
   const allPosts = await getCollection('blog')
   const posts = allPosts
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
@@ -12,7 +13,7 @@ export async function GET(context) {
   return rss({
     title: 'iamjkahn',
     description: 'Random musings of a solutions architect, speaker, technology guy, dad',
-    site: context.site,
+    site: context.site!,
     items: posts.map((post) => {
       const [year, month, , ...rest] = post.id.replace(/\.md$/, '').split('-')
       const slug = rest.join('-')

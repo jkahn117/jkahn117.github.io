@@ -4,17 +4,17 @@ export const prerender = true
 import { getCollection } from 'astro:content'
 import Base from '@/layouts/Base.astro'
 import SimpleLayout from '@/components/SimpleLayout.astro'
-import Card from '@/components/Card.astro'
-import CardTitle from '@/components/CardTitle.astro'
-import CardEyebrow from '@/components/CardEyebrow.astro'
-import CardDescription from '@/components/CardDescription.astro'
-import CardCta from '@/components/CardCta.astro'
-import { formatDate } from '@/lib/formatDate.js'
+import Card from '@/components/Card/Card.astro'
+import CardTitle from '@/components/Card/CardTitle.astro'
+import CardEyebrow from '@/components/Card/CardEyebrow.astro'
+import CardDescription from '@/components/Card/CardDescription.astro'
+import CardCta from '@/components/Card/CardCta.astro'
+import { formatDate } from '@/lib/formatDate.ts'
 
 const allPosts = await getCollection('blog')
 const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 
-function getPostSlug(post) {
+function getPostSlug(post: (typeof posts)[number]) {
   const [year, month, , ...rest] = post.id.replace(/\.md$/, '').split('-')
   return `${year}/${month}/${rest.join('-')}`
 }

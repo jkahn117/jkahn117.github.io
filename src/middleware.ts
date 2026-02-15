@@ -1,3 +1,5 @@
+import type { MiddlewareHandler } from 'astro'
+
 /**
  * Handles legacy URL redirects from old Blogger.com URLs that Google previously indexed.
  *
@@ -7,7 +9,7 @@
  *
  * The /archive → /posts redirect is handled in astro.config.mjs.
  */
-export function onRequest({ request, redirect }, next) {
+export const onRequest: MiddlewareHandler = ({ request, redirect }, next) => {
   const url = new URL(request.url)
   const match = url.pathname.match(/^\/(\d{4})\/(\d{2})\/(.+?)(?:\.html)?$/)
   if (match) {

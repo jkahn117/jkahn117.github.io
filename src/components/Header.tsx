@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 import clsx from 'clsx'
 import {
   Menu,
@@ -11,7 +11,7 @@ import {
 
 import avatarImage from '@/images/avatar.jpg'
 
-function CloseIcon(props) {
+function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
       <path
@@ -26,7 +26,7 @@ function CloseIcon(props) {
   )
 }
 
-function ChevronDownIcon(props) {
+function ChevronDownIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 8 6" aria-hidden="true" {...props}>
       <path
@@ -40,7 +40,7 @@ function ChevronDownIcon(props) {
   )
 }
 
-function SunIcon(props) {
+function SunIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -59,7 +59,7 @@ function SunIcon(props) {
   )
 }
 
-function MoonIcon(props) {
+function MoonIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
       <path
@@ -72,7 +72,13 @@ function MoonIcon(props) {
   )
 }
 
-function MobileNavItem({ href, currentPath, children }) {
+interface NavItemProps {
+  href: string
+  currentPath: string
+  children: ReactNode
+}
+
+function MobileNavItem({ href, currentPath, children }: NavItemProps) {
   const isActive = currentPath === href
 
   return (
@@ -91,7 +97,7 @@ function MobileNavItem({ href, currentPath, children }) {
   )
 }
 
-function MobileNavigation({ currentPath, ...props }) {
+function MobileNavigation({ currentPath, ...props }: { currentPath: string } & React.ComponentPropsWithoutRef<'div'>) {
   return (
     <Menu {...props} as="div">
       <MenuButton className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
@@ -127,7 +133,7 @@ function MobileNavigation({ currentPath, ...props }) {
   )
 }
 
-function NavItem({ href, currentPath, children }) {
+function NavItem({ href, currentPath, children }: NavItemProps) {
   const isActive = currentPath === href
 
   return (
@@ -150,7 +156,7 @@ function NavItem({ href, currentPath, children }) {
   )
 }
 
-function DesktopNavigation({ currentPath, ...props }) {
+function DesktopNavigation({ currentPath, ...props }: { currentPath: string } & React.ComponentPropsWithoutRef<'nav'>) {
   return (
     <nav {...props}>
       <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
@@ -205,13 +211,13 @@ function ThemeToggle() {
   )
 }
 
-function clamp(number, a, b) {
+function clamp(number: number, a: number, b: number): number {
   let min = Math.min(a, b)
   let max = Math.max(a, b)
   return Math.min(Math.max(number, min), max)
 }
 
-function AvatarContainer({ className, ...props }) {
+function AvatarContainer({ className, ...props }: React.ComponentPropsWithoutRef<'div'>) {
   return (
     <div
       className={clsx(
@@ -223,7 +229,7 @@ function AvatarContainer({ className, ...props }) {
   )
 }
 
-function Avatar({ large = false, className, ...props }) {
+function Avatar({ large = false, className, ...props }: { large?: boolean } & React.ComponentPropsWithoutRef<'a'>) {
   return (
     <a
       href="/"
@@ -245,22 +251,22 @@ function Avatar({ large = false, className, ...props }) {
   )
 }
 
-export function Header({ currentPath = '/' }) {
+export function Header({ currentPath = '/' }: { currentPath?: string }) {
   const isHomePage = currentPath === '/'
 
-  const headerRef = useRef(null)
-  const avatarRef = useRef(null)
+  const headerRef = useRef<HTMLDivElement>(null)
+  const avatarRef = useRef<HTMLDivElement>(null)
   const isInitial = useRef(true)
 
   useEffect(() => {
     let downDelay = avatarRef.current?.offsetTop ?? 0
     let upDelay = 64
 
-    function setProperty(property, value) {
+    function setProperty(property: string, value: string) {
       document.documentElement.style.setProperty(property, value)
     }
 
-    function removeProperty(property) {
+    function removeProperty(property: string) {
       document.documentElement.style.removeProperty(property)
     }
 
@@ -365,14 +371,14 @@ export function Header({ currentPath = '/' }) {
             />
             <div
               className="top-0 order-last -mb-3 pt-3 sm:px-8"
-              style={{ position: 'var(--header-position)' }}
+              style={{ position: 'var(--header-position)' as React.CSSProperties['position'] }}
             >
               <div className="mx-auto w-full max-w-7xl lg:px-8">
                 <div className="relative px-4 sm:px-8 lg:px-12">
                   <div className="mx-auto max-w-2xl lg:max-w-5xl">
                     <div
                       className="top-[var(--avatar-top,theme(spacing.3))] w-full"
-                      style={{ position: 'var(--header-inner-position)' }}
+                      style={{ position: 'var(--header-inner-position)' as React.CSSProperties['position'] }}
                     >
                       <div className="relative">
                         <AvatarContainer
@@ -398,7 +404,7 @@ export function Header({ currentPath = '/' }) {
         <div
           ref={headerRef}
           className="top-0 z-10 h-16 pt-6"
-          style={{ position: 'var(--header-position)' }}
+          style={{ position: 'var(--header-position)' as React.CSSProperties['position'] }}
         >
           <div
             className="sm:px-8"
@@ -408,7 +414,7 @@ export function Header({ currentPath = '/' }) {
                 <div className="mx-auto max-w-2xl lg:max-w-5xl">
                   <div
                     className="top-[var(--header-top,theme(spacing.6))] w-full"
-                    style={{ position: 'var(--header-inner-position)' }}
+                    style={{ position: 'var(--header-inner-position)' as React.CSSProperties['position'] }}
                   >
                     <div className="relative flex gap-4">
                       <div className="flex flex-1">

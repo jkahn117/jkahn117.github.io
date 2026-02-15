@@ -1,10 +1,10 @@
 import { format, isMatch, parse } from 'date-fns';
 
-export function formatDate(dateStr) {
+export function formatDate(dateStr: string | Date): string {
   if (typeof dateStr !== "string") { dateStr = dateStr.toISOString() }
 
   let date = new Date();
-  
+
   if (isMatch(dateStr, "yyyy-MM-dd HH:mm xx")) {
     // 2020-09-09 09:30 -0500
     date = parse(dateStr, "yyyy-MM-dd HH:mm xx", new Date());

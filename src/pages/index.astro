@@ -4,15 +4,14 @@ export const prerender = true
 import { getCollection } from 'astro:content'
 import { Image } from 'astro:assets'
 import Base from '@/layouts/Base.astro'
-import Card from '@/components/Card.astro'
-import CardTitle from '@/components/CardTitle.astro'
-import CardEyebrow from '@/components/CardEyebrow.astro'
-import CardDescription from '@/components/CardDescription.astro'
-import CardCta from '@/components/CardCta.astro'
+import Card from '@/components/Card/Card.astro'
+import CardTitle from '@/components/Card/CardTitle.astro'
+import CardEyebrow from '@/components/Card/CardEyebrow.astro'
+import CardDescription from '@/components/Card/CardDescription.astro'
+import CardCta from '@/components/Card/CardCta.astro'
 import Container from '@/components/Container.astro'
-import { BlueskyIcon, GitHubIcon, LinkedInIcon, XIcon } from '@/components/SocialIcons.jsx'
-import { formatDate } from '@/lib/formatDate.js'
-import avatarImage from '@/images/avatar.jpg'
+import { BlueskyIcon, GitHubIcon, LinkedInIcon, XIcon } from '@/components/SocialIcons.tsx'
+import { formatDate } from '@/lib/formatDate.ts'
 import logoCloudflare from '@/images/logos/cloudflare.svg'
 import logoStripe from '@/images/logos/stripe.svg'
 import logoAmazon from '@/images/logos/amazon.svg'
@@ -29,7 +28,7 @@ const posts = allPosts
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 4)
 
-function getPostSlug(post) {
+function getPostSlug(post: (typeof posts)[number]) {
   const [year, month, , ...rest] = post.id.replace(/\.md$/, '').split('-')
   return `${year}/${month}/${rest.join('-')}`
 }
