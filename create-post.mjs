@@ -47,7 +47,7 @@ const date = {
 const postSlug = `${date.year}-${date.month}-${date.date}-${titleSlug}`;
 
 // check for existing file
-if (fs.existsSync(`./src/app/_posts/${postSlug}.md`)) {
+if (fs.existsSync(`./src/content/blog/${postSlug}.md`)) {
   throw "Post with this slug already exists"
 }
 
@@ -65,6 +65,6 @@ if (style === "link" && url) {
 frontMatter = frontMatter.concat("---");
 
 fs.writeFileSync(
-  `./src/app/_posts/${postSlug}.md`,
+  `./src/content/blog/${postSlug}.md`,
   frontMatter
 );

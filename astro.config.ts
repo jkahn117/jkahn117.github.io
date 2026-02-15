@@ -1,0 +1,18 @@
+import { defineConfig } from 'astro/config'
+import tailwindcss from '@tailwindcss/vite'
+import cloudflare from '@astrojs/cloudflare'
+import react from '@astrojs/react'
+import sitemap from '@astrojs/sitemap'
+
+export default defineConfig({
+  site: 'https://blog.iamjkahn.com',
+  output: 'server',
+  adapter: cloudflare({ imageService: 'compile' }),
+  integrations: [react(), sitemap()],
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  redirects: {
+    '/archive': '/posts',
+  },
+})

@@ -1,5 +1,5 @@
 pre[class*='language-'] {
-  color: theme('colors.zinc.100');
+  color: #f4f4f5; /* zinc-100 */
 }
 
 .token.tag,
@@ -8,7 +8,7 @@ pre[class*='language-'] {
 .token.selector .class,
 .token.selector.class,
 .token.function {
-  color: theme('colors.pink.400');
+  color: #f472b6; /* pink-400 */
 }
 
 .token.attr-name,
@@ -16,32 +16,32 @@ pre[class*='language-'] {
 .token.rule,
 .token.pseudo-class,
 .token.important {
-  color: theme('colors.zinc.300');
+  color: #d4d4d8; /* zinc-300 */
 }
 
 .token.module {
-  color: theme('colors.pink.400');
+  color: #f472b6; /* pink-400 */
 }
 
 .token.attr-value,
 .token.class,
 .token.string,
 .token.property {
-  color: theme('colors.teal.300');
+  color: #5eead4; /* teal-300 */
 }
 
 .token.punctuation,
 .token.attr-equals {
-  color: theme('colors.zinc.500');
+  color: #71717a; /* zinc-500 */
 }
 
 .token.unit,
 .language-css .token.function {
-  color: theme('colors.sky.200');
+  color: #bae6fd; /* sky-200 */
 }
 
 .token.comment,
 .token.operator,
 .token.combinator {
-  color: theme('colors.zinc.400');
+  color: #a1a1aa; /* zinc-400 */
 }
