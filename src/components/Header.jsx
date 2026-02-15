@@ -1,17 +1,6 @@
-'use client'
-
 import { useEffect, useRef, useState } from 'react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { useTheme } from 'next-themes'
+import clsx from 'clsx'
 import {
-  CloseButton,
-  Popover,
-  PopoverButton,
-  PopoverBackdrop,
-  PopoverPanel,
-  //
   Menu,
   MenuButton,
   MenuHeading,
@@ -19,11 +8,8 @@ import {
   MenuItems,
   MenuSection,
 } from '@headlessui/react'
-import clsx from 'clsx'
 
-import { Container } from '@/components/Container'
 import avatarImage from '@/images/avatar.jpg'
-import ExportedImage from 'next-image-export-optimizer'
 
 function CloseIcon(props) {
   return (
@@ -86,12 +72,12 @@ function MoonIcon(props) {
   )
 }
 
-function MobileNavItem({ href, children }) {
-  let isActive = usePathname() === href;
+function MobileNavItem({ href, currentPath, children }) {
+  const isActive = currentPath === href
 
   return (
     <li>
-      <MenuItem as={Link} href={href}
+      <MenuItem as="a" href={href}
         className={clsx(
           'block py-2',
           isActive
@@ -105,14 +91,13 @@ function MobileNavItem({ href, children }) {
   )
 }
 
-function MobileNavigation(props) {
+function MobileNavigation({ currentPath, ...props }) {
   return (
-    <Menu { ...props } as="div">
+    <Menu {...props} as="div">
       <MenuButton className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
         Menu
         <ChevronDownIcon className="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400" />
       </MenuButton>
-
       <MenuItems
         transition
         anchor={{ to: 'bottom end', gap: '8px' }}
@@ -122,23 +107,18 @@ function MobileNavigation(props) {
           <MenuHeading className="flex flex-row-reverse items-center justify-between">
             <MenuItem className="-m-1 p-1">
               {({ close }) => (
-                <a className="" aria-label="Close menu" href="#" onClick={ close }>
+                <a className="" aria-label="Close menu" href="#" onClick={close}>
                   <CloseIcon className="h-6 w-6 text-zinc-500 dark:text-zinc-400" />
                 </a>
               )}
             </MenuItem>
-            {/* <h2 className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
-              Navigation
-            </h2> */}
           </MenuHeading>
           <nav className="mt-4">
             <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
-            <MobileNavItem href="/">Home</MobileNavItem>
-              <MobileNavItem href="/about">About</MobileNavItem>
-              <MobileNavItem href="/posts">Posts</MobileNavItem>
-              {/* <MobileNavItem href="/projects">Projects</MobileNavItem> */}
-              <MobileNavItem href="/speaking">Speaking</MobileNavItem>
-              {/* <MobileNavItem href="/uses">Uses</MobileNavItem> */}
+              <MobileNavItem href="/" currentPath={currentPath}>Home</MobileNavItem>
+              <MobileNavItem href="/about" currentPath={currentPath}>About</MobileNavItem>
+              <MobileNavItem href="/posts" currentPath={currentPath}>Posts</MobileNavItem>
+              <MobileNavItem href="/speaking" currentPath={currentPath}>Speaking</MobileNavItem>
             </ul>
           </nav>
         </MenuSection>
@@ -147,60 +127,12 @@ function MobileNavigation(props) {
   )
 }
 
-function MobileNavItem1({ href, children }) {
-  return (
-    <li>
-      <CloseButton as={Link} href={href} className="block py-2">
-        {children}
-      </CloseButton>
-    </li>
-  )
-}
-
-function MobileNavigation1(props) {
-  return (
-    <Popover {...props}>
-      <PopoverButton className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
-        Menu
-        <ChevronDownIcon className="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400" />
-      </PopoverButton>
-      <PopoverBackdrop
-        transition
-        className="fixed inset-0 z-50 bg-zinc-800/40 backdrop-blur-sm duration-150 data-[closed]:opacity-0 data-[enter]:ease-out data-[leave]:ease-in dark:bg-black/80"
-      />
-      <PopoverPanel
-        focus
-        transition
-        className="fixed inset-x-4 top-8 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-zinc-900/5 duration-150 data-[closed]:scale-95 data-[closed]:opacity-0 data-[enter]:ease-out data-[leave]:ease-in dark:bg-zinc-900 dark:ring-zinc-800"
-      >
-        <div className="flex flex-row-reverse items-center justify-between">
-          <CloseButton as={ PopoverButton } aria-label="Close menu" className="-m-1 p-1">
-            <CloseIcon className="h-6 w-6 text-zinc-500 dark:text-zinc-400" />
-          </CloseButton>
-          <h2 className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
-            Navigation
-          </h2>
-        </div>
-        <nav className="mt-6">
-          <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
-            <MobileNavItem href="/about">About</MobileNavItem>
-            <MobileNavItem href="/posts">Posts</MobileNavItem>
-            {/* <MobileNavItem href="/projects">Projects</MobileNavItem> */}
-            <MobileNavItem href="/speaking">Speaking</MobileNavItem>
-            {/* <MobileNavItem href="/uses">Uses</MobileNavItem> */}
-          </ul>
-        </nav>
-      </PopoverPanel>
-    </Popover>
-  )
-}
-
-function NavItem({ href, children }) {
-  let isActive = usePathname() === href
+function NavItem({ href, currentPath, children }) {
+  const isActive = currentPath === href
 
   return (
     <li>
-      <Link
+      <a
         href={href}
         className={clsx(
           'relative block px-3 py-2 transition',
@@ -213,40 +145,59 @@ function NavItem({ href, children }) {
         {isActive && (
           <span className="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0" />
         )}
-      </Link>
+      </a>
     </li>
   )
 }
 
-function DesktopNavigation(props) {
+function DesktopNavigation({ currentPath, ...props }) {
   return (
     <nav {...props}>
       <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
-        <NavItem href="/about">About</NavItem>
-        <NavItem href="/posts">Posts</NavItem>
-        {/* <NavItem href="/projects">Projects</NavItem> */}
-        <NavItem href="/speaking">Speaking</NavItem>
-        {/* <NavItem href="/uses">Uses</NavItem> */}
+        <NavItem href="/about" currentPath={currentPath}>About</NavItem>
+        <NavItem href="/posts" currentPath={currentPath}>Posts</NavItem>
+        <NavItem href="/speaking" currentPath={currentPath}>Speaking</NavItem>
       </ul>
     </nav>
   )
 }
 
 function ThemeToggle() {
-  let { resolvedTheme, setTheme } = useTheme()
-  let otherTheme = resolvedTheme === 'dark' ? 'light' : 'dark'
-  let [mounted, setMounted] = useState(false)
+  const [isDark, setIsDark] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
+    setIsDark(document.documentElement.classList.contains('dark'))
+
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains('dark'))
+    })
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    })
+    return () => observer.disconnect()
   }, [])
+
+  function toggleTheme() {
+    const next = !isDark
+    if (next) {
+      document.documentElement.classList.add('dark')
+      localStorage.setItem('theme', 'dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+      localStorage.setItem('theme', 'light')
+    }
+    setIsDark(next)
+  }
 
   return (
     <button
       type="button"
-      aria-label={mounted ? `Switch to ${otherTheme} theme` : 'Toggle theme'}
-      className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
-      onClick={() => setTheme(otherTheme)}
+      aria-label={mounted ? (isDark ? 'Switch to light theme' : 'Switch to dark theme') : 'Toggle theme'}
+      className="cursor-pointer group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+      onClick={toggleTheme}
     >
       <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-teal-50 [@media(prefers-color-scheme:dark)]:stroke-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-teal-600" />
       <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-teal-500" />
@@ -274,32 +225,32 @@ function AvatarContainer({ className, ...props }) {
 
 function Avatar({ large = false, className, ...props }) {
   return (
-    <Link
+    <a
       href="/"
       aria-label="Home"
       className={clsx(className, 'pointer-events-auto')}
       {...props}
     >
-      <ExportedImage
-        src={avatarImage}
+      <img
+        src={avatarImage.src}
         alt=""
-        sizes={large ? '4rem' : '2.25rem'}
+        width={large ? 64 : 36}
+        height={large ? 64 : 36}
         className={clsx(
           'rounded-full bg-zinc-100 object-cover dark:bg-zinc-800',
           large ? 'h-16 w-16' : 'h-9 w-9',
         )}
-        priority
       />
-    </Link>
+    </a>
   )
 }
 
-export function Header() {
-  let isHomePage = usePathname() === '/'
+export function Header({ currentPath = '/' }) {
+  const isHomePage = currentPath === '/'
 
-  let headerRef = useRef(null)
-  let avatarRef = useRef(null)
-  let isInitial = useRef(true)
+  const headerRef = useRef(null)
+  const avatarRef = useRef(null)
+  const isInitial = useRef(true)
 
   useEffect(() => {
     let downDelay = avatarRef.current?.offsetTop ?? 0
@@ -314,9 +265,7 @@ export function Header() {
     }
 
     function updateHeaderStyles() {
-      if (!headerRef.current) {
-        return
-      }
+      if (!headerRef.current) return
 
       let { top, height } = headerRef.current.getBoundingClientRect()
       let scrollY = clamp(
@@ -355,9 +304,7 @@ export function Header() {
     }
 
     function updateAvatarStyles() {
-      if (!isHomePage) {
-        return
-      }
+      if (!isHomePage) return
 
       let fromScale = 1
       let toScale = 36 / 64
@@ -416,68 +363,82 @@ export function Header() {
               ref={avatarRef}
               className="order-last mt-[calc(theme(spacing.16)-theme(spacing.3))]"
             />
-            <Container
-              className="top-0 order-last -mb-3 pt-3"
-              style={{
-                position: 'var(--header-position)',
-              }}
+            <div
+              className="top-0 order-last -mb-3 pt-3 sm:px-8"
+              style={{ position: 'var(--header-position)' }}
             >
-              <div
-                className="top-[var(--avatar-top,theme(spacing.3))] w-full"
-                style={{
-                  position: 'var(--header-inner-position)',
-                }}
-              >
-                <div className="relative">
-                  <AvatarContainer
-                    className="absolute left-0 top-3 origin-left transition-opacity"
-                    style={{
-                      opacity: 'var(--avatar-border-opacity, 0)',
-                      transform: 'var(--avatar-border-transform)',
-                    }}
-                  />
-                  <Avatar
-                    large
-                    className="block h-16 w-16 origin-left"
-                    style={{ transform: 'var(--avatar-image-transform)' }}
-                  />
+              <div className="mx-auto w-full max-w-7xl lg:px-8">
+                <div className="relative px-4 sm:px-8 lg:px-12">
+                  <div className="mx-auto max-w-2xl lg:max-w-5xl">
+                    <div
+                      className="top-[var(--avatar-top,theme(spacing.3))] w-full"
+                      style={{ position: 'var(--header-inner-position)' }}
+                    >
+                      <div className="relative">
+                        <AvatarContainer
+                          className="absolute left-0 top-3 origin-left transition-opacity"
+                          style={{
+                            opacity: 'var(--avatar-border-opacity, 0)',
+                            transform: 'var(--avatar-border-transform)',
+                          }}
+                        />
+                        <Avatar
+                          large
+                          className="block h-16 w-16 origin-left"
+                          style={{ transform: 'var(--avatar-image-transform)' }}
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </Container>
+            </div>
           </>
         )}
         <div
           ref={headerRef}
           className="top-0 z-10 h-16 pt-6"
-          style={{
-            position: 'var(--header-position)',
-          }}
+          style={{ position: 'var(--header-position)' }}
         >
-          <Container
-            className="top-[var(--header-top,theme(spacing.6))] w-full"
-            style={{
-              position: 'var(--header-inner-position)',
-            }}
+          <div
+            className="sm:px-8"
           >
-            <div className="relative flex gap-4">
-              <div className="flex flex-1">
-                {!isHomePage && (
-                  <AvatarContainer>
-                    <Avatar />
-                  </AvatarContainer>
-                )}
-              </div>
-              <div className="flex flex-1 justify-end md:justify-center">
-                <MobileNavigation className="pointer-events-auto md:hidden" />
-                <DesktopNavigation className="pointer-events-auto hidden md:block" />
-              </div>
-              <div className="flex justify-end md:flex-1">
-                <div className="pointer-events-auto">
-                  <ThemeToggle />
+            <div className="mx-auto w-full max-w-7xl lg:px-8">
+              <div className="relative px-4 sm:px-8 lg:px-12">
+                <div className="mx-auto max-w-2xl lg:max-w-5xl">
+                  <div
+                    className="top-[var(--header-top,theme(spacing.6))] w-full"
+                    style={{ position: 'var(--header-inner-position)' }}
+                  >
+                    <div className="relative flex gap-4">
+                      <div className="flex flex-1">
+                        {!isHomePage && (
+                          <AvatarContainer>
+                            <Avatar />
+                          </AvatarContainer>
+                        )}
+                      </div>
+                      <div className="flex flex-1 justify-end md:justify-center">
+                        <MobileNavigation
+                          currentPath={currentPath}
+                          className="pointer-events-auto md:hidden"
+                        />
+                        <DesktopNavigation
+                          currentPath={currentPath}
+                          className="pointer-events-auto hidden md:block"
+                        />
+                      </div>
+                      <div className="flex justify-end md:flex-1">
+                        <div className="pointer-events-auto">
+                          <ThemeToggle />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </Container>
+          </div>
         </div>
       </header>
       {isHomePage && (
