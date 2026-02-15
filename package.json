@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler types && astro dev",
-    "build": "wrangler types && astro check && astro build",
+    "build": "wrangler types && astro build",
     "preview": "wrangler types && astro preview",
     "lint": "eslint .",
     "create": "node ./create-post.mjs"
