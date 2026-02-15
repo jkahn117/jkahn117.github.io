@@ -33,7 +33,7 @@ jobs:
         run: pnpm run build
         env:
           PUBLIC_SITE_URL: https://blog.iamjkahn.com
-          PUBLIC_ANALYTICS_URL: https://cs.iamjkahn.com/collect
+          PUBLIC_ANALYTICS_URL: https://cs.iamjkahn.com/tracker.js
 
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
