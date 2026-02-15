@@ -6,3 +6,7 @@ declare namespace App {
   interface Locals extends Runtime {}
 }
 
+interface Window {
+  __ANALYTICS_URL: string
+}
+
