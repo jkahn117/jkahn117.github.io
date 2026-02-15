@@ -78,7 +78,7 @@ const rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
     <div class="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
       {photos.map((photo, i) => (
         <div class:list={[
-          'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-72 sm:rounded-2xl dark:bg-zinc-800',
+          'relative aspect-9/10 w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 sm:w-72 sm:rounded-2xl dark:bg-zinc-800',
           rotations[i % rotations.length]
         ]}>
           <Image
