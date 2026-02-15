@@ -12,7 +12,7 @@
   },
   "vars": {
     "SITE_URL": "https://blog.iamjkahn.com",
-    "ANALYTICS_URL": "https://analytics.iamjkahn.com/collect"
+    "ANALYTICS_URL": "https://cs.iamjkahn.com/collect"
   },
   "routes": [
     {

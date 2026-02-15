@@ -26,13 +26,12 @@ const fullTitle = title.endsWith('Josh Kahn') ? title : `${title} - Josh Kahn`
       href={`${siteUrl}/feed.xml`}
     />
 
-    <script is:inline define:vars={{ ANALYTICS_URL }}>
-      window.__ANALYTICS_URL = ANALYTICS_URL
-    </script>
-    <script>
-      import { init } from "@counterscale/tracker"
-      init({ siteId: "blog.iamjkahn", reporterUrl: window.__ANALYTICS_URL })
-    </script>
+    <script
+      id="counterscale-script"
+      data-site-id="blog.iamjkahn"
+      src={ANALYTICS_URL}
+      defer
+    ></script>
 
 
     <!-- Dark mode: apply saved preference before first paint to prevent flash -->
