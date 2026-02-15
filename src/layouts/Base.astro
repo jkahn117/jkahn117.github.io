@@ -1,14 +1,21 @@
 ---
 import Layout from '@/components/Layout.astro'
 import '@/css/tailwind.css'
+import * as Counterscale from "@counterscale/tracker";
 
 const {
   title = 'Josh Kahn - Solutions architect, speaker, technology guy, dad',
   description = "I'm Josh, a technology guy based in Chicago, IL.",
 } = Astro.props
 
-const siteUrl = 'https://blog.iamjkahn.com'
+const { SITE_URL, ANALYTICS_URL } = Astro.locals.runtime.env
+const siteUrl = SITE_URL ?? "https://blog.iamjkahn.com";
 const fullTitle = title.endsWith('Josh Kahn') ? title : `${title} - Josh Kahn`
+
+Counterscale.init({
+  siteId: "blog.iamjkahn",
+  reporterUrl: ANALYTICS_URL,
+});
 ---
 
 <html lang="en" class="h-full antialiased">
@@ -24,12 +31,6 @@ const fullTitle = title.endsWith('Josh Kahn') ? title : `${title} - Josh Kahn`
       title="Josh Kahn"
       href={`${siteUrl}/feed.xml`}
     />
-    <!-- Beam Analytics -->
-    <script
-      src="https://beamanalytics.io/beam.min.js"
-      data-token="bc31214f-5579-438d-b781-416b8f686177"
-      async
-    ></script>
     <!-- Dark mode: apply saved preference before first paint to prevent flash -->
     <script is:inline>
       ;(function () {

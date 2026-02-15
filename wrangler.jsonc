@@ -9,5 +9,16 @@
   },
   "observability": {
     "enabled": true
-  }
+  },
+  "vars": {
+    "SITE_URL": "https://blog.iamjkahn.com",
+    "ANALYTICS_URL": "https://counterscale.iamjkahn.workers.dev/collect"
+  },
+  "routes": [
+    {
+      "pattern": "blog.iamjkahn.com",
+      "custom_domain": true
+    }
+  ],
+  "workers_dev": false
 }
