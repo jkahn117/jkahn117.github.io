@@ -11,8 +11,7 @@
     "enabled": true
   },
   "vars": {
-    "SITE_URL": "https://blog.iamjkahn.com",
-    "ANALYTICS_URL": "https://cs.iamjkahn.com/collect"
+    "SITE_URL": "https://blog.iamjkahn.com"
   },
   "routes": [
     {

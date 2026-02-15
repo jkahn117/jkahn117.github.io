@@ -7,8 +7,8 @@ const {
   description = "I'm Josh, a technology guy based in Chicago, IL.",
 } = Astro.props
 
-const { SITE_URL, ANALYTICS_URL } = Astro.locals.runtime.env
-const siteUrl = SITE_URL ?? "https://blog.iamjkahn.com";
+const siteUrl = import.meta.env.PUBLIC_SITE_URL ?? "https://blog.iamjkahn.com"
+const analyticsUrl = import.meta.env.PUBLIC_ANALYTICS_URL
 const fullTitle = title.endsWith('Josh Kahn') ? title : `${title} - Josh Kahn`
 ---
 
@@ -29,7 +29,7 @@ const fullTitle = title.endsWith('Josh Kahn') ? title : `${title} - Josh Kahn`
     <script
       id="counterscale-script"
       data-site-id="blog.iamjkahn"
-      src={ANALYTICS_URL}
+      src={analyticsUrl}
       defer
     ></script>
 
