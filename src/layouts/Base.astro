@@ -1,7 +1,6 @@
 ---
 import Layout from '@/components/Layout.astro'
 import '@/css/tailwind.css'
-import * as Counterscale from "@counterscale/tracker";
 
 const {
   title = 'Josh Kahn - Solutions architect, speaker, technology guy, dad',
@@ -11,11 +10,6 @@ const {
 const { SITE_URL, ANALYTICS_URL } = Astro.locals.runtime.env
 const siteUrl = SITE_URL ?? "https://blog.iamjkahn.com";
 const fullTitle = title.endsWith('Josh Kahn') ? title : `${title} - Josh Kahn`
-
-Counterscale.init({
-  siteId: "blog.iamjkahn",
-  reporterUrl: ANALYTICS_URL,
-});
 ---
 
 <html lang="en" class="h-full antialiased">
@@ -31,6 +25,16 @@ Counterscale.init({
       title="Josh Kahn"
       href={`${siteUrl}/feed.xml`}
     />
+
+    <script is:inline define:vars={{ ANALYTICS_URL }}>
+      window.__ANALYTICS_URL = ANALYTICS_URL
+    </script>
+    <script>
+      import { init } from "@counterscale/tracker"
+      init({ siteId: "blog.iamjkahn", reporterUrl: window.__ANALYTICS_URL })
+    </script>
+
+
     <!-- Dark mode: apply saved preference before first paint to prevent flash -->
     <script is:inline>
       ;(function () {
