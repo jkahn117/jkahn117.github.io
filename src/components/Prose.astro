@@ -2,6 +2,6 @@
 const { class: className, ...rest } = Astro.props
 ---
 
-<div class:list={['prose dark:prose-invert', className]} {...rest}>
+<div class:list={['prose', className]} {...rest}>
   <slot />
 </div>

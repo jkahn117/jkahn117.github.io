@@ -1,5 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
-import clsx from 'clsx'
+import avatarImage from "@/images/avatar.jpg";
 import {
   Menu,
   MenuButton,
@@ -7,9 +6,9 @@ import {
   MenuItem,
   MenuItems,
   MenuSection,
-} from '@headlessui/react'
-
-import avatarImage from '@/images/avatar.jpg'
+} from "@headlessui/react";
+import clsx from "clsx";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 
 function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -23,7 +22,7 @@ function CloseIcon(props: React.SVGProps<SVGSVGElement>) {
         strokeLinejoin="round"
       />
     </svg>
-  )
+  );
 }
 
 function ChevronDownIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -37,7 +36,7 @@ function ChevronDownIcon(props: React.SVGProps<SVGSVGElement>) {
         strokeLinejoin="round"
       />
     </svg>
-  )
+  );
 }
 
 function SunIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -56,7 +55,7 @@ function SunIcon(props: React.SVGProps<SVGSVGElement>) {
         fill="none"
       />
     </svg>
-  )
+  );
 }
 
 function MoonIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -69,51 +68,61 @@ function MoonIcon(props: React.SVGProps<SVGSVGElement>) {
         strokeLinejoin="round"
       />
     </svg>
-  )
+  );
 }
 
 interface NavItemProps {
-  href: string
-  currentPath: string
-  children: ReactNode
+  href: string;
+  currentPath: string;
+  children: ReactNode;
 }
 
 function MobileNavItem({ href, currentPath, children }: NavItemProps) {
-  const isActive = currentPath === href
+  const isActive = currentPath === href;
 
   return (
     <li>
-      <MenuItem as="a" href={href}
+      <MenuItem
+        as="a"
+        href={href}
         className={clsx(
-          'block py-2',
+          "block py-2",
           isActive
-            ? 'font-extrabold text-teal-500 dark:text-teal-400'
-            : 'hover:text-teal-500 dark:hover:text-teal-400',
+            ? "font-extrabold text-teal-500 dark:text-teal-400"
+            : "hover:text-teal-500 dark:hover:text-teal-400",
         )}
       >
         {children}
       </MenuItem>
     </li>
-  )
+  );
 }
 
-function MobileNavigation({ currentPath, ...props }: { currentPath: string } & React.ComponentPropsWithoutRef<'div'>) {
+function MobileNavigation({
+  currentPath,
+  ...props
+}: { currentPath: string } & React.ComponentPropsWithoutRef<"div">) {
   return (
     <Menu {...props} as="div">
-      <MenuButton className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
+      <MenuButton className="group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-zinc-800 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20">
         Menu
         <ChevronDownIcon className="ml-3 h-auto w-2 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400" />
       </MenuButton>
       <MenuItems
         transition
-        anchor={{ to: 'bottom end', gap: '8px' }}
-        className="fixed inset-x-4 top-8 z-50 origin-top rounded-3xl w-3/4 bg-white p-8 ring-2 ring-zinc-900/5 duration-150 data-[closed]:scale-95 data-[closed]:opacity-0 data-[enter]:ease-out data-[leave]:ease-in dark:bg-zinc-900 dark:ring-zinc-800"
+        anchor={{ to: "bottom end", gap: "8px" }}
+        className="fixed inset-x-4 top-8 z-50 w-3/4 origin-top rounded-3xl bg-white p-8 ring-2 ring-zinc-900/5 duration-150 data-[closed]:scale-95 data-[closed]:opacity-0 data-[enter]:ease-out data-[leave]:ease-in dark:bg-zinc-900 dark:ring-zinc-800"
       >
         <MenuSection>
           <MenuHeading className="flex flex-row-reverse items-center justify-between">
             <MenuItem className="-m-1 p-1">
               {({ close }) => (
-                <a className="" aria-label="Close menu" href="#" onClick={close}>
+                <a
+                  className=""
+                  aria-label="Close menu"
+                  href="#"
+                  onClick={close}
+                >
                   <CloseIcon className="h-6 w-6 text-zinc-500 dark:text-zinc-400" />
                 </a>
               )}
@@ -121,30 +130,38 @@ function MobileNavigation({ currentPath, ...props }: { currentPath: string } & R
           </MenuHeading>
           <nav className="mt-4">
             <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
-              <MobileNavItem href="/" currentPath={currentPath}>Home</MobileNavItem>
-              <MobileNavItem href="/about" currentPath={currentPath}>About</MobileNavItem>
-              <MobileNavItem href="/posts" currentPath={currentPath}>Posts</MobileNavItem>
-              <MobileNavItem href="/speaking" currentPath={currentPath}>Speaking</MobileNavItem>
+              <MobileNavItem href="/" currentPath={currentPath}>
+                Home
+              </MobileNavItem>
+              <MobileNavItem href="/about" currentPath={currentPath}>
+                About
+              </MobileNavItem>
+              <MobileNavItem href="/posts" currentPath={currentPath}>
+                Posts
+              </MobileNavItem>
+              <MobileNavItem href="/speaking" currentPath={currentPath}>
+                Speaking
+              </MobileNavItem>
             </ul>
           </nav>
         </MenuSection>
       </MenuItems>
     </Menu>
-  )
+  );
 }
 
 function NavItem({ href, currentPath, children }: NavItemProps) {
-  const isActive = currentPath === href
+  const isActive = currentPath === href;
 
   return (
     <li>
       <a
         href={href}
         className={clsx(
-          'relative block px-3 py-2 transition',
+          "relative block px-3 py-2 transition",
           isActive
-            ? 'text-teal-500 dark:text-teal-400'
-            : 'hover:text-teal-500 dark:hover:text-teal-400',
+            ? "text-teal-500 dark:text-teal-400"
+            : "hover:text-teal-500 dark:hover:text-teal-400",
         )}
       >
         {children}
@@ -153,88 +170,110 @@ function NavItem({ href, currentPath, children }: NavItemProps) {
         )}
       </a>
     </li>
-  )
+  );
 }
 
-function DesktopNavigation({ currentPath, ...props }: { currentPath: string } & React.ComponentPropsWithoutRef<'nav'>) {
+function DesktopNavigation({
+  currentPath,
+  ...props
+}: { currentPath: string } & React.ComponentPropsWithoutRef<"nav">) {
   return (
     <nav {...props}>
-      <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
-        <NavItem href="/about" currentPath={currentPath}>About</NavItem>
-        <NavItem href="/posts" currentPath={currentPath}>Posts</NavItem>
-        <NavItem href="/speaking" currentPath={currentPath}>Speaking</NavItem>
+      <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
+        <NavItem href="/about" currentPath={currentPath}>
+          About
+        </NavItem>
+        <NavItem href="/posts" currentPath={currentPath}>
+          Posts
+        </NavItem>
+        <NavItem href="/speaking" currentPath={currentPath}>
+          Speaking
+        </NavItem>
       </ul>
     </nav>
-  )
+  );
 }
 
 function ThemeToggle() {
-  const [isDark, setIsDark] = useState(false)
-  const [mounted, setMounted] = useState(false)
+  const [isDark, setIsDark] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true)
-    setIsDark(document.documentElement.classList.contains('dark'))
+    setMounted(true);
+    setIsDark(document.documentElement.classList.contains("dark"));
 
     const observer = new MutationObserver(() => {
-      setIsDark(document.documentElement.classList.contains('dark'))
-    })
+      setIsDark(document.documentElement.classList.contains("dark"));
+    });
     observer.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ['class'],
-    })
-    return () => observer.disconnect()
-  }, [])
+      attributeFilter: ["class"],
+    });
+    return () => observer.disconnect();
+  }, []);
 
   function toggleTheme() {
-    const next = !isDark
+    const next = !isDark;
     if (next) {
-      document.documentElement.classList.add('dark')
-      localStorage.setItem('theme', 'dark')
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
     } else {
-      document.documentElement.classList.remove('dark')
-      localStorage.setItem('theme', 'light')
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
-    setIsDark(next)
+    setIsDark(next);
   }
 
   return (
     <button
       type="button"
-      aria-label={mounted ? (isDark ? 'Switch to light theme' : 'Switch to dark theme') : 'Toggle theme'}
-      className="cursor-pointer group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+      aria-label={
+        mounted
+          ? isDark
+            ? "Switch to light theme"
+            : "Switch to dark theme"
+          : "Toggle theme"
+      }
+      className="group cursor-pointer rounded-full bg-white/90 px-3 py-2 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
       onClick={toggleTheme}
     >
       <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-teal-50 [@media(prefers-color-scheme:dark)]:stroke-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-teal-600" />
-      <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-teal-500" />
+      <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400" />
     </button>
-  )
+  );
 }
 
 function clamp(number: number, a: number, b: number): number {
-  let min = Math.min(a, b)
-  let max = Math.max(a, b)
-  return Math.min(Math.max(number, min), max)
+  let min = Math.min(a, b);
+  let max = Math.max(a, b);
+  return Math.min(Math.max(number, min), max);
 }
 
-function AvatarContainer({ className, ...props }: React.ComponentPropsWithoutRef<'div'>) {
+function AvatarContainer({
+  className,
+  ...props
+}: React.ComponentPropsWithoutRef<"div">) {
   return (
     <div
       className={clsx(
         className,
-        'h-10 w-10 rounded-full bg-white/90 p-0.5 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10',
+        "h-10 w-10 rounded-full bg-white/90 p-0.5 shadow-lg ring-1 shadow-zinc-800/5 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10",
       )}
       {...props}
     />
-  )
+  );
 }
 
-function Avatar({ large = false, className, ...props }: { large?: boolean } & React.ComponentPropsWithoutRef<'a'>) {
+function Avatar({
+  large = false,
+  className,
+  ...props
+}: { large?: boolean } & React.ComponentPropsWithoutRef<"a">) {
   return (
     <a
       href="/"
       aria-label="Home"
-      className={clsx(className, 'pointer-events-auto')}
+      className={clsx(className, "pointer-events-auto")}
       {...props}
     >
       <img
@@ -243,124 +282,124 @@ function Avatar({ large = false, className, ...props }: { large?: boolean } & Re
         width={large ? 64 : 36}
         height={large ? 64 : 36}
         className={clsx(
-          'rounded-full bg-zinc-100 object-cover dark:bg-zinc-800',
-          large ? 'h-16 w-16' : 'h-9 w-9',
+          "rounded-full bg-zinc-100 object-cover dark:bg-zinc-800",
+          large ? "h-16 w-16" : "h-9 w-9",
         )}
       />
     </a>
-  )
+  );
 }
 
-export function Header({ currentPath = '/' }: { currentPath?: string }) {
-  const isHomePage = currentPath === '/'
+export function Header({ currentPath = "/" }: { currentPath?: string }) {
+  const isHomePage = currentPath === "/";
 
-  const headerRef = useRef<HTMLDivElement>(null)
-  const avatarRef = useRef<HTMLDivElement>(null)
-  const isInitial = useRef(true)
+  const headerRef = useRef<HTMLDivElement>(null);
+  const avatarRef = useRef<HTMLDivElement>(null);
+  const isInitial = useRef(true);
 
   useEffect(() => {
-    let downDelay = avatarRef.current?.offsetTop ?? 0
-    let upDelay = 64
+    let downDelay = avatarRef.current?.offsetTop ?? 0;
+    let upDelay = 64;
 
     function setProperty(property: string, value: string) {
-      document.documentElement.style.setProperty(property, value)
+      document.documentElement.style.setProperty(property, value);
     }
 
     function removeProperty(property: string) {
-      document.documentElement.style.removeProperty(property)
+      document.documentElement.style.removeProperty(property);
     }
 
     function updateHeaderStyles() {
-      if (!headerRef.current) return
+      if (!headerRef.current) return;
 
-      let { top, height } = headerRef.current.getBoundingClientRect()
+      let { top, height } = headerRef.current.getBoundingClientRect();
       let scrollY = clamp(
         window.scrollY,
         0,
         document.body.scrollHeight - window.innerHeight,
-      )
+      );
 
       if (isInitial.current) {
-        setProperty('--header-position', 'sticky')
+        setProperty("--header-position", "sticky");
       }
 
-      setProperty('--content-offset', `${downDelay}px`)
+      setProperty("--content-offset", `${downDelay}px`);
 
       if (isInitial.current || scrollY < downDelay) {
-        setProperty('--header-height', `${downDelay + height}px`)
-        setProperty('--header-mb', `${-downDelay}px`)
+        setProperty("--header-height", `${downDelay + height}px`);
+        setProperty("--header-mb", `${-downDelay}px`);
       } else if (top + height < -upDelay) {
-        let offset = Math.max(height, scrollY - upDelay)
-        setProperty('--header-height', `${offset}px`)
-        setProperty('--header-mb', `${height - offset}px`)
+        let offset = Math.max(height, scrollY - upDelay);
+        setProperty("--header-height", `${offset}px`);
+        setProperty("--header-mb", `${height - offset}px`);
       } else if (top === 0) {
-        setProperty('--header-height', `${scrollY + height}px`)
-        setProperty('--header-mb', `${-scrollY}px`)
+        setProperty("--header-height", `${scrollY + height}px`);
+        setProperty("--header-mb", `${-scrollY}px`);
       }
 
       if (top === 0 && scrollY > 0 && scrollY >= downDelay) {
-        setProperty('--header-inner-position', 'fixed')
-        removeProperty('--header-top')
-        removeProperty('--avatar-top')
+        setProperty("--header-inner-position", "fixed");
+        removeProperty("--header-top");
+        removeProperty("--avatar-top");
       } else {
-        removeProperty('--header-inner-position')
-        setProperty('--header-top', '0px')
-        setProperty('--avatar-top', '0px')
+        removeProperty("--header-inner-position");
+        setProperty("--header-top", "0px");
+        setProperty("--avatar-top", "0px");
       }
     }
 
     function updateAvatarStyles() {
-      if (!isHomePage) return
+      if (!isHomePage) return;
 
-      let fromScale = 1
-      let toScale = 36 / 64
-      let fromX = 0
-      let toX = 2 / 16
+      let fromScale = 1;
+      let toScale = 36 / 64;
+      let fromX = 0;
+      let toX = 2 / 16;
 
-      let scrollY = downDelay - window.scrollY
+      let scrollY = downDelay - window.scrollY;
 
-      let scale = (scrollY * (fromScale - toScale)) / downDelay + toScale
-      scale = clamp(scale, fromScale, toScale)
+      let scale = (scrollY * (fromScale - toScale)) / downDelay + toScale;
+      scale = clamp(scale, fromScale, toScale);
 
-      let x = (scrollY * (fromX - toX)) / downDelay + toX
-      x = clamp(x, fromX, toX)
+      let x = (scrollY * (fromX - toX)) / downDelay + toX;
+      x = clamp(x, fromX, toX);
 
       setProperty(
-        '--avatar-image-transform',
+        "--avatar-image-transform",
         `translate3d(${x}rem, 0, 0) scale(${scale})`,
-      )
+      );
 
-      let borderScale = 1 / (toScale / scale)
-      let borderX = (-toX + x) * borderScale
-      let borderTransform = `translate3d(${borderX}rem, 0, 0) scale(${borderScale})`
+      let borderScale = 1 / (toScale / scale);
+      let borderX = (-toX + x) * borderScale;
+      let borderTransform = `translate3d(${borderX}rem, 0, 0) scale(${borderScale})`;
 
-      setProperty('--avatar-border-transform', borderTransform)
-      setProperty('--avatar-border-opacity', scale === toScale ? '1' : '0')
+      setProperty("--avatar-border-transform", borderTransform);
+      setProperty("--avatar-border-opacity", scale === toScale ? "1" : "0");
     }
 
     function updateStyles() {
-      updateHeaderStyles()
-      updateAvatarStyles()
-      isInitial.current = false
+      updateHeaderStyles();
+      updateAvatarStyles();
+      isInitial.current = false;
     }
 
-    updateStyles()
-    window.addEventListener('scroll', updateStyles, { passive: true })
-    window.addEventListener('resize', updateStyles)
+    updateStyles();
+    window.addEventListener("scroll", updateStyles, { passive: true });
+    window.addEventListener("resize", updateStyles);
 
     return () => {
-      window.removeEventListener('scroll', updateStyles)
-      window.removeEventListener('resize', updateStyles)
-    }
-  }, [isHomePage])
+      window.removeEventListener("scroll", updateStyles);
+      window.removeEventListener("resize", updateStyles);
+    };
+  }, [isHomePage]);
 
   return (
     <>
       <header
         className="pointer-events-none relative z-50 flex flex-none flex-col"
         style={{
-          height: 'var(--header-height)',
-          marginBottom: 'var(--header-mb)',
+          height: "var(--header-height)",
+          marginBottom: "var(--header-mb)",
         }}
       >
         {isHomePage && (
@@ -371,27 +410,33 @@ export function Header({ currentPath = '/' }: { currentPath?: string }) {
             />
             <div
               className="top-0 order-last -mb-3 pt-3 sm:px-8"
-              style={{ position: 'var(--header-position)' as React.CSSProperties['position'] }}
+              style={{
+                position:
+                  "var(--header-position)" as React.CSSProperties["position"],
+              }}
             >
               <div className="mx-auto w-full max-w-7xl lg:px-8">
                 <div className="relative px-4 sm:px-8 lg:px-12">
                   <div className="mx-auto max-w-2xl lg:max-w-5xl">
                     <div
                       className="top-[var(--avatar-top,theme(spacing.3))] w-full"
-                      style={{ position: 'var(--header-inner-position)' as React.CSSProperties['position'] }}
+                      style={{
+                        position:
+                          "var(--header-inner-position)" as React.CSSProperties["position"],
+                      }}
                     >
                       <div className="relative">
                         <AvatarContainer
-                          className="absolute left-0 top-3 origin-left transition-opacity"
+                          className="absolute top-3 left-0 origin-left transition-opacity"
                           style={{
-                            opacity: 'var(--avatar-border-opacity, 0)',
-                            transform: 'var(--avatar-border-transform)',
+                            opacity: "var(--avatar-border-opacity, 0)",
+                            transform: "var(--avatar-border-transform)",
                           }}
                         />
                         <Avatar
                           large
                           className="block h-16 w-16 origin-left"
-                          style={{ transform: 'var(--avatar-image-transform)' }}
+                          style={{ transform: "var(--avatar-image-transform)" }}
                         />
                       </div>
                     </div>
@@ -404,17 +449,21 @@ export function Header({ currentPath = '/' }: { currentPath?: string }) {
         <div
           ref={headerRef}
           className="top-0 z-10 h-16 pt-6"
-          style={{ position: 'var(--header-position)' as React.CSSProperties['position'] }}
+          style={{
+            position:
+              "var(--header-position)" as React.CSSProperties["position"],
+          }}
         >
-          <div
-            className="sm:px-8"
-          >
+          <div className="sm:px-8">
             <div className="mx-auto w-full max-w-7xl lg:px-8">
               <div className="relative px-4 sm:px-8 lg:px-12">
                 <div className="mx-auto max-w-2xl lg:max-w-5xl">
                   <div
                     className="top-[var(--header-top,theme(spacing.6))] w-full"
-                    style={{ position: 'var(--header-inner-position)' as React.CSSProperties['position'] }}
+                    style={{
+                      position:
+                        "var(--header-inner-position)" as React.CSSProperties["position"],
+                    }}
                   >
                     <div className="relative flex gap-4">
                       <div className="flex flex-1">
@@ -450,9 +499,9 @@ export function Header({ currentPath = '/' }: { currentPath?: string }) {
       {isHomePage && (
         <div
           className="flex-none"
-          style={{ height: 'var(--content-offset)' }}
+          style={{ height: "var(--content-offset)" }}
         />
       )}
     </>
-  )
+  );
 }
