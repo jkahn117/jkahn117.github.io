@@ -1,0 +1,21 @@
+{
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports",
+    "prettier-plugin-astro",
+    "prettier-plugin-tailwindcss"
+  ],
+  "overrides": [
+    {
+      "files": "*.astro",
+      "options": {
+        "parser": "astro"
+      }
+    }
+  ],
+  "bracketSpacing": true,
+  "tabWidth": 2,
+  "tailwindFunctions": ["clsx"],
+  "tailwindStylesheet": "./src/css/tailwind.css",
+  "trailingComma": "all",
+  "useTabs": false
+}

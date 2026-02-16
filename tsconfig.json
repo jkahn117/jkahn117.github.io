@@ -6,7 +6,11 @@
     }
   },
   "include": [
+    ".astro/types.d.ts",
     "src/**/*",
     "worker-configuration.d.ts"
+  ],
+  "exclude": [
+    "dist"
   ]
 }

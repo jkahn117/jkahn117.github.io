@@ -26,6 +26,6 @@ Personal blog at https://blog.iamjkahn.com — built with Astro 5, React, Tailwi
 
 **Components**: Mix of `.astro` and `.jsx` (React) components. React is used for interactive components (`Header.jsx`, `SocialIcons.jsx`). The Card component is split into subcomponents (`Card`, `CardTitle`, `CardDescription`, `CardEyebrow`, `CardCta`, `CardLink`).
 
-**Styling**: Tailwind CSS v4 via Vite plugin (not PostCSS). Global styles in `src/css/tailwind.css`. Code syntax highlighting uses `src/css/prism.css`. Typography uses `@tailwindcss/typography`.
+**Styling**: Tailwind CSS v4 via Vite plugin (not PostCSS). Global styles in `src/css/tailwind.css`. Typography uses `@tailwindcss/typography`.
 
 **Formatting**: Prettier with no semicolons, double quotes. Config in `prettier.config.js`.
