@@ -3,8 +3,6 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@import "./prism.css";
-
 @theme {
   /* Font sizes with explicit line heights */
   --font-size-xs: 0.8125rem;
@@ -35,7 +33,7 @@
   --font-size-9xl--line-height: 1;
 }
 
-/* Custom prose theme — light mode variables */
+/* Custom prose theme */
 .prose {
   --tw-prose-body: #52525b;
   --tw-prose-headings: #18181b;
@@ -56,26 +54,29 @@
   --tw-prose-pre-border: transparent;
   --tw-prose-th-borders: #e4e4e7;
   --tw-prose-td-borders: #f4f4f5;
-  /* Invert variables for .prose-invert / dark:prose-invert */
-  --tw-prose-invert-body: #a1a1aa;
-  --tw-prose-invert-headings: #e4e4e7;
-  --tw-prose-invert-links: #2dd4bf;
-  --tw-prose-invert-links-hover: #2dd4bf;
-  --tw-prose-invert-underline: color-mix(in oklch, #2dd4bf 30%, transparent);
-  --tw-prose-invert-underline-hover: #2dd4bf;
-  --tw-prose-invert-bold: #e4e4e7;
-  --tw-prose-invert-counters: #e4e4e7;
-  --tw-prose-invert-bullets: #e4e4e7;
-  --tw-prose-invert-hr: color-mix(in oklch, #3f3f46 40%, transparent);
-  --tw-prose-invert-quote-borders: #71717a;
-  --tw-prose-invert-captions: #71717a;
-  --tw-prose-invert-code: #d4d4d8;
-  --tw-prose-invert-code-bg: color-mix(in oklch, #e4e4e7 5%, transparent);
-  --tw-prose-invert-pre-code: #f4f4f5;
-  --tw-prose-invert-pre-bg: rgb(0 0 0 / 0.4);
-  --tw-prose-invert-pre-border: color-mix(in oklch, #e4e4e7 10%, transparent);
-  --tw-prose-invert-th-borders: #3f3f46;
-  --tw-prose-invert-td-borders: #27272a;
+
+  @variant dark {
+    --tw-prose-body: #e4e4e7;
+    --tw-prose-headings: #f4f4f5;
+    --tw-prose-links: #2dd4bf;
+    --tw-prose-links-hover: #2dd4bf;
+    --tw-prose-underline: color-mix(in oklch, #2dd4bf 30%, transparent);
+    --tw-prose-underline-hover: #2dd4bf;
+    --tw-prose-bold: #e4e4e7;
+    --tw-prose-counters: #e4e4e7;
+    --tw-prose-bullets: #e4e4e7;
+    --tw-prose-hr: color-mix(in oklch, #3f3f46 40%, transparent);
+    --tw-prose-quote-borders: #71717a;
+    --tw-prose-captions: #71717a;
+    --tw-prose-code: #d4d4d8;
+    --tw-prose-code-bg: color-mix(in oklch, #e4e4e7 5%, transparent);
+    --tw-prose-pre-code: #f4f4f5;
+    --tw-prose-pre-bg: rgb(0 0 0 / 0.4);
+    --tw-prose-pre-border: color-mix(in oklch, #e4e4e7 10%, transparent);
+    --tw-prose-th-borders: #3f3f46;
+    --tw-prose-td-borders: #27272a;
+  }
+
   color: var(--tw-prose-body);
   line-height: 1.75rem;
 }
