@@ -12,7 +12,7 @@
   },
   "vars": {
     "SITE_URL": "https://blog.iamjkahn.com",
-    "BLUESKY_HANDLE": "iamjkahn.com",
+    "PUBLIC_BLUESKY_HANDLE": "iamjkahn.com",
     "CDN": "cloudflare"
   },
   "routes": [

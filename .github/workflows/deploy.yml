@@ -34,6 +34,7 @@ jobs:
         env:
           PUBLIC_SITE_URL: https://blog.iamjkahn.com
           PUBLIC_ANALYTICS_URL: https://cs.iamjkahn.com/tracker.js
+          PUBLIC_BLUESKY_HANDLE: iamjkahn.com
 
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
