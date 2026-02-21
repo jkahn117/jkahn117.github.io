@@ -1,27 +1,30 @@
 ---
 import { BlueskyPost, type Post } from "@astro-community/astro-embed-bluesky";
 import { CacheHeaders } from "cdn-cache-control";
-import { createAgent } from "../lib/bluesky";
+import { getAgent } from "../lib/bluesky";
 
 export const prerender = false;
 
 const { actor, cacheTime = 3600 } = Astro.props;
 
-const { BLUESKY_HANDLE, BLUESKY_APP_PASSWORD } = Astro.locals.runtime.env;
-const agent = await createAgent(BLUESKY_HANDLE, BLUESKY_APP_PASSWORD);
+let post: Post | undefined;
 
-const { data } = await agent.getAuthorFeed({
-  actor,
-  limit: 1,
-});
-const post = data.feed[0].post as Post;
+try {
+  const { BLUESKY_HANDLE, BLUESKY_APP_PASSWORD } = Astro.locals.runtime.env;
+  const agent = await getAgent(BLUESKY_HANDLE, BLUESKY_APP_PASSWORD);
+  const { data } = await agent.getAuthorFeed({ actor, limit: 1 });
+  post = data.feed[0]?.post as Post | undefined;
+} catch (err) {
+  console.error("[🦋 Bluesky component]", err);
+}
 
-// caching
-const headers = new CacheHeaders()
-  .swr()
-  .ttl(cacheTime)
-  .tag(["posts", `post-${actor}`]);
-headers.forEach((value, key) => Astro.response.headers.set(key, value));
+if (post) {
+  const headers = new CacheHeaders()
+    .swr()
+    .ttl(cacheTime)
+    .tag(["posts", `post-${actor}`]);
+  headers.forEach((value, key) => Astro.response.headers.set(key, value));
+}
 ---
 
-<BlueskyPost post={post} />
+{post && <BlueskyPost post={post} />}
