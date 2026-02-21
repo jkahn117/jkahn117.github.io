@@ -1,11 +1,14 @@
 ---
-import agent from "../lib/bluesky";
 import { BlueskyPost, type Post } from "@astro-community/astro-embed-bluesky";
 import { CacheHeaders } from "cdn-cache-control";
+import { createAgent } from "../lib/bluesky";
 
 export const prerender = false;
 
 const { actor, cacheTime = 3600 } = Astro.props;
+
+const { BLUESKY_HANDLE, BLUESKY_APP_PASSWORD } = Astro.locals.runtime.env;
+const agent = await createAgent(BLUESKY_HANDLE, BLUESKY_APP_PASSWORD);
 
 const { data } = await agent.getAuthorFeed({
   actor,
