@@ -12,7 +12,8 @@
   },
   "vars": {
     "SITE_URL": "https://blog.iamjkahn.com",
-    "BLUESKY_HANDLE": "iamjkahn.com"
+    "BLUESKY_HANDLE": "iamjkahn.com",
+    "CDN": "cloudflare"
   },
   "routes": [
     {

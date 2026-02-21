@@ -41,3 +41,53 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           wranglerVersion: "4.65.0"
+
+  announce:
+    needs: deploy
+    runs-on: ubuntu-latest
+    # Only runs on push events — skip workflow_dispatch (no before SHA available)
+    if: github.event_name == 'push'
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "pnpm"
+
+      - name: Install
+        run: pnpm install
+
+      - name: Detect new posts
+        id: diff
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+        run: |
+          # Guard against first-ever push to the branch (before SHA is all zeros)
+          if [ "$BEFORE_SHA" = "0000000000000000000000000000000000000000" ]; then
+            echo "files=" >> $GITHUB_OUTPUT
+          else
+            NEW=$(git diff --name-only --diff-filter=A "$BEFORE_SHA" "$AFTER_SHA" \
+              -- 'src/content/blog/*.md' | xargs)
+            echo "files=$NEW" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Announce on Bluesky
+        if: steps.diff.outputs.files != ''
+        env:
+          NEW_POSTS: ${{ steps.diff.outputs.files }}
+          BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+        run: node scripts/announce-post.mjs $NEW_POSTS
