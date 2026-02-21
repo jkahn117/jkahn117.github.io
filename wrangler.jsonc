@@ -11,7 +11,8 @@
     "enabled": true
   },
   "vars": {
-    "SITE_URL": "https://blog.iamjkahn.com"
+    "SITE_URL": "https://blog.iamjkahn.com",
+    "BLUESKY_HANDLE": "iamjkahn.com"
   },
   "routes": [
     {

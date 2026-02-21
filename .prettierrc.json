@@ -10,6 +10,13 @@
       "options": {
         "parser": "astro"
       }
+    },
+    {
+      "files": "*.jsonc",
+      "options": {
+        "parser": "jsonc",
+        "trailingComma": "none"
+      }
     }
   ],
   "bracketSpacing": true,
